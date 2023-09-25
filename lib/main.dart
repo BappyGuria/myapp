@@ -11,11 +11,28 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.pink,
+          foregroundColor: Colors.white,
+          centerTitle: true
+        ),
+       textButtonTheme: TextButtonThemeData(
+         style: TextButton.styleFrom(
+           foregroundColor: Colors.pink,
+
+         )
+       ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.pink,
+            foregroundColor: Colors.white,
+          )
+        )
       ),
       home: MyHomePage(),
     );
@@ -28,7 +45,25 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Theme Data'),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Hello Theme Data App.'),
+              TextButton(onPressed: (){},
+                  child: Text('Tap Hear')
+              ),
+              ElevatedButton(onPressed: (){}, child: Text('Tap Hear'))
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
